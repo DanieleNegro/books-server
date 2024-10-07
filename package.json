@@ -1,0 +1,16 @@
+{
+  "name": "books-server",
+  "version": "1.0.0",
+  "description": "This server gives you some REST APIs to handle a list of books",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Daniele Negro",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
