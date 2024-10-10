@@ -1,5 +1,3 @@
-DROP DATABASE librarydb;
-
 CREATE DATABASE librarydb;
 
 USE librarydb;
@@ -13,6 +11,8 @@ CREATE TABLE
         category INT,
         PRIMARY KEY (id)
     );
+
+SHOW TABLES;
 
 INSERT INTO
     books (title, author, available, category)
