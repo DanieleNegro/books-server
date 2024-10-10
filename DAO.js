@@ -46,7 +46,7 @@ const getAvailableBooks = (callback) => {
 };
 
 const insertBook = (body, callback) => {
-  const sqlQuery = `INSERT INTO librarydb.books (title, author, available, category) VALUES("${body.title}","${body.author}","${body.available}","${body.category}")`;
+  const sqlQuery = `INSERT INTO librarydb.books (title, author, available, category) VALUES("${body.title}","${body.author}","${body.available}",${body.category})`;
   con.query(sqlQuery, (err, result, fields) => {
     if (err) throw err;
     return callback(result);
@@ -62,7 +62,7 @@ const deleteBook = (id, callback) => {
 };
 
 const updateBook = (id, body, callback) => {
-  const sqlQuery = ` UPDATE librarydb.books SET title = "${body.title}", author = "${body.author}", available = "${body.available}", category = "${body.category}" WHERE id = ${id}`;
+  const sqlQuery = ` UPDATE librarydb.books SET title = "${body.title}", author = "${body.author}", available = "${body.available}", category = ${body.category} WHERE id = ${id}`;
   con.query(sqlQuery, (err, result, fields) => {
     if (err) throw err;
     return callback(result);
