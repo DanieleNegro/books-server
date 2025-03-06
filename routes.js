@@ -26,8 +26,16 @@ const libraryServices = (app) => {
     });
   });
   app.get(BASEURI + '/search', (req, res) => {
-    const category = req.query.category;
-    console.log('GET: books by ' + category);
+    const term = req.query.term;
+    console.log('GET: books by ' + term);
+    dao.searchBook(term, (result) => {
+      const books = result.map((v) => Object.assign({}, v));
+      return res.send(books);
+    });
+  });
+  app.get(BASEURI + '/search/:category', (req, res) => {
+    const category = req.params.category;
+    console.log('GET: books by category: ' + category);
     dao.getBooksByCategory(category, (result) => {
       const books = result.map((v) => Object.assign({}, v));
       return res.send(books);

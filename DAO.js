@@ -15,7 +15,7 @@ const getBooks = (callback) => {
     (err, result, fields) => {
       if (err) throw err;
       return callback(result);
-    }
+    },
   );
 };
 
@@ -41,7 +41,7 @@ const getAvailableBooks = (callback) => {
     (err, result, fields) => {
       if (err) throw err;
       return callback(result);
-    }
+    },
   );
 };
 
@@ -69,6 +69,14 @@ const updateBook = (id, body, callback) => {
   });
 };
 
+const searchBook = (term, callback) => {
+  const sqlQuery = `SELECT * FROM librarydb.books WHERE title LIKE "${term}%"`;
+  con.query(sqlQuery, (err, result, fields) => {
+    if (err) throw err;
+    return callback(result);
+  });
+};
+
 module.exports.getBooks = getBooks;
 module.exports.getBook = getBook;
 module.exports.getBooksByCategory = getBooksByCategory;
@@ -76,3 +84,4 @@ module.exports.getAvailableBooks = getAvailableBooks;
 module.exports.insertBook = insertBook;
 module.exports.deleteBook = deleteBook;
 module.exports.updateBook = updateBook;
+module.exports.searchBook = searchBook;
